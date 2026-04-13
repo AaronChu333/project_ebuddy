@@ -24,7 +24,7 @@ export default function Login() {
         setSuccess('Check your email for a confirmation link!');
       } else {
         await signIn(email, password);
-        navigate('/dashboard');
+        navigate('/discover');
       }
     } catch (err) {
       setError(err.message);
@@ -38,9 +38,9 @@ export default function Login() {
       <div className="login-container">
         <div className="login-card" id="login-card">
           <div className="login-header">
-            <div className="login-icon">eb</div>
-            <h1>{isSignUp ? 'Create your account' : 'Welcome back'}</h1>
-            <p>{isSignUp ? 'Start your journey with eBuddy' : 'Sign in to continue to eBuddy'}</p>
+            <div className="login-icon">💕</div>
+            <h1>{isSignUp ? 'Join eBuddy' : 'Welcome back'}</h1>
+            <p>{isSignUp ? 'Start meeting amazing people' : 'Sign in to find your next match'}</p>
           </div>
 
           <form onSubmit={handleSubmit} className="login-form" id="login-form">

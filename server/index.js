@@ -4,10 +4,12 @@ import { dirname, resolve } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: resolve(__dirname, '..', '.env') });
-import express from 'express';
-import cors from 'cors';
-import healthRouter from './routes/health.js';
-import usersRouter from './routes/users.js';
+
+// Dynamic imports so that dotenv has loaded before supabaseAdmin.js reads process.env
+const express = (await import('express')).default;
+const cors = (await import('cors')).default;
+const { default: healthRouter } = await import('./routes/health.js');
+const { default: usersRouter } = await import('./routes/users.js');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
